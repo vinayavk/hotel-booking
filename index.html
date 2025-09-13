@@ -1,0 +1,2276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--
+      AVK Apartments – Modern living in Mulugu’s premier new development
+
+      This document is a complete, self‑contained website. All HTML, CSS
+      and JavaScript are inlined for portability. No external libraries or
+      images are referenced; instead, visuals are generated with CSS, SVG
+      or Canvas. Colours, spacing and textual content are configurable
+      through variables defined in the script.
+
+      The design follows a luxurious, modern aesthetic: dark backgrounds with
+      warm metallic accents and subtle glass effects. Typography scales
+      fluidly using clamp() to look refined on any screen size. Features
+      include an animated hero background, interactive cards, sliders for
+      floor plans and gallery, a map and amenities section, pricing and
+      availability cards with editable status, a command palette, a
+      contact form and an embedded scheduling widget (Cal.com) within a
+      modal. Accessibility and performance are considered throughout.
+    -->
+    <title>AVK Apartments – Modern living in Mulugu’s premier new development</title>
+    <meta
+      name="description"
+      content="AVK Apartments offers modern living in Mulugu's premier new development. Discover 12 brand‑new 1BHK units with 24/7 lift and water, parking and ground‑floor shops. Schedule a visit or download our brochure."
+    />
+    <!-- Open Graph & Twitter metadata: a gradient placeholder image is encoded below -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="AVK Apartments – Modern living in Mulugu’s premier new development" />
+    <meta property="og:description" content="Discover your new home in Mulugu’s premier development. 12 brand‑new 1BHKs with 24/7 lift, water, parking and shops." />
+    <meta property="og:image" content="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nNjAwJyBoZWlnaHQ9JzQwMCcgdmlld0JveD0nMCAwIDYwMCA0MDAnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+PHJlY3Qgd2lkdGg9JzYwMCcgaGVpZ2h0PSc0MDAnIGZpbGw9JyMxMTEzMTUnLz48cmVjdCB3aWR0aD0nNjAwJyBoZWlnaHQ9JzIwMCcgZmlsbD0nIzE4MTkxNicvPjxjaXJjbGUgY3g9JzMwMCcgY3k9JzIwMCcgcj0nMTAwJyBmaWxsPScjZDE5YjMyJyBvcGFjaXR5PScwLjEnLz48L3N2Zz4=" />
+    <meta property="og:url" content="https://avk-apartments.example.com/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AVK Apartments – Modern living in Mulugu’s premier new development" />
+    <meta name="twitter:description" content="Discover your new home in Mulugu’s premier development. 12 brand‑new 1BHKs with 24/7 lift, water, parking and shops." />
+    <meta name="twitter:image" content="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nNjAwJyBoZWlnaHQ9JzQwMCcgdmlld0JveD0nMCAwIDYwMCA0MDAnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+PHJlY3Qgd2lkdGg9JzYwMCcgaGVpZ2h0PSc0MDAnIGZpbGw9JyMxMTEzMTUnLz48cmVjdCB3aWR0aD0nNjAwJyBoZWlnaHQ9JzIwMCcgZmlsbD0nIzE4MTkxNicvPjxjaXJjbGUgY3g9JzMwMCcgY3k9JzIwMCcgcj0nMTAwJyBmaWxsPScjZDE5YjMyJyBvcGFjaXR5PScwLjEnLz48L3N2Zz4=" />
+    <!-- Favicon as a tiny building silhouette drawn inline -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='%23d19b32'%3E%3Cpath d='M4 28v-8h4v8h4v-12h4v12h4v-16h4v16h4v-20h4v20h-28z'/%3E%3C/svg%3E"
+    />
+    <style>
+      /*
+        Theme variables
+        ---------------
+        Colour palette, typography scale, spacing and layout constants are
+        defined here. Modify these values to tweak the look of the entire
+        site. A secondary darker theme is available by toggling a class on
+        the html element. Animations respect prefers-reduced-motion.
+      */
+      :root {
+        /* Base colours */
+        --color-bg: #111315;
+        --color-bg-alt: #16181a;
+        --color-primary: #d19b32;
+        --color-primary-light: #e4ba57;
+        --color-secondary: #7f5f23;
+        --color-accent: #f2c94c;
+        --color-text: #ececec;
+        --color-muted: #999999;
+        --card-bg: rgba(255, 255, 255, 0.05);
+        --card-glow: rgba(209, 155, 50, 0.45);
+        --shadow-color: rgba(0, 0, 0, 0.5);
+        --scrollbar-thumb: rgba(255, 255, 255, 0.2);
+        --scrollbar-thumb-hover: rgba(255, 255, 255, 0.4);
+
+        /* Typography scale */
+        --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+          Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        --fs-h1: clamp(2.2rem, 1.5rem + 3vw, 4rem);
+        --fs-h2: clamp(1.5rem, 1.2rem + 1.5vw, 2.4rem);
+        --fs-h3: clamp(1.2rem, 1.1rem + 1vw, 1.8rem);
+        --fs-body: clamp(0.95rem, 0.9rem + 0.3vw, 1.1rem);
+
+        /* Spacing */
+        --space-xs: 0.5rem;
+        --space-sm: 1rem;
+        --space-md: 2rem;
+        --space-lg: 3rem;
+        --space-xl: 5rem;
+
+        /* Layout */
+        --max-width: 1200px;
+        --header-height: 4rem;
+
+        /* Animation durations */
+        --trans-fast: 0.2s;
+        --trans-med: 0.4s;
+        --trans-slow: 0.8s;
+      }
+      /* Darker theme: toggled via .theme-darker on <html> */
+      html.theme-darker {
+        --color-bg: #0b0c0d;
+        --color-bg-alt: #111214;
+        --color-primary: #c99d3a;
+        --color-primary-light: #deb053;
+        --color-secondary: #65471b;
+        --color-text: #dbdbdb;
+        --card-bg: rgba(255, 255, 255, 0.06);
+      }
+
+      /* Reset & global base styles */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: var(--font-family);
+        font-size: var(--fs-body);
+        line-height: 1.6;
+        background-color: var(--color-bg);
+        color: var(--color-text);
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        margin: 0 0 var(--space-sm) 0;
+        font-weight: 600;
+        color: var(--color-text);
+      }
+      h1 { font-size: var(--fs-h1); letter-spacing: 0.02em; }
+      h2 { font-size: var(--fs-h2); letter-spacing: 0.01em; }
+      h3 { font-size: var(--fs-h3); letter-spacing: 0.02em; }
+      p { margin-bottom: var(--space-sm); max-width: 65ch; }
+      a { color: var(--color-primary); text-decoration: none; transition: color var(--trans-fast); }
+      a:hover, a:focus { color: var(--color-primary-light); }
+      ul { list-style: none; padding: 0; margin: 0; }
+      img { max-width: 100%; height: auto; }
+
+      /* Scrollbar styling */
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: var(--color-bg); }
+      ::-webkit-scrollbar-thumb {
+        background: var(--scrollbar-thumb);
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--scrollbar-thumb-hover);
+      }
+
+      /* Layout helpers */
+      .container {
+        width: 100%;
+        max-width: var(--max-width);
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: var(--space-sm);
+        padding-right: var(--space-sm);
+      }
+      .row {
+        display: grid;
+        grid-gap: var(--space-sm);
+        grid-template-columns: repeat(12, 1fr);
+      }
+      .col-12 { grid-column: span 12; }
+      @media (min-width: 640px) {
+        .col-sm-6 { grid-column: span 6; }
+        .col-sm-4 { grid-column: span 4; }
+      }
+      @media (min-width: 900px) {
+        .col-md-3 { grid-column: span 3; }
+        .col-md-4 { grid-column: span 4; }
+        .col-md-6 { grid-column: span 6; }
+      }
+
+      /* Header & navigation */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: var(--header-height);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 var(--space-sm);
+        background-color: rgba(17, 19, 21, 0.85);
+        backdrop-filter: blur(8px);
+        z-index: 1000;
+        /* Establish a positioning context for absolutely positioned auth buttons */
+        position: fixed;
+      }
+      header .brand {
+        display: flex;
+        align-items: center;
+        gap: var(--space-xs);
+      }
+      header .brand svg {
+        width: 1.8rem;
+        height: 1.8rem;
+        fill: var(--color-primary);
+      }
+      header .brand span {
+        font-weight: 600;
+        font-size: 1.2rem;
+        letter-spacing: 0.05em;
+      }
+      nav {
+        display: none;
+        gap: var(--space-md);
+        align-items: center;
+      }
+      nav a {
+        position: relative;
+        padding: var(--space-xs) var(--space-sm);
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--color-text);
+      }
+      nav a:hover, nav a:focus {
+        color: var(--color-primary);
+      }
+      nav a.active::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+      }
+      .nav-toggle {
+        background: none;
+        border: none;
+        color: var(--color-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        cursor: pointer;
+      }
+      .nav-toggle svg {
+        width: 1.5rem;
+        height: 1.5rem;
+        fill: var(--color-primary);
+      }
+      .theme-toggle {
+        background: none;
+        border: none;
+        margin-left: var(--space-sm);
+        cursor: pointer;
+        color: var(--color-primary);
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .theme-toggle svg {
+        width: 1.2rem;
+        height: 1.2rem;
+        fill: var(--color-primary);
+      }
+      @media (min-width: 768px) {
+        nav { display: flex; }
+        .nav-toggle { display: none; }
+      }
+
+      /* Scroll progress bar */
+      .progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        width: 100%;
+        z-index: 1001;
+        background: transparent;
+      }
+      .progress-bar span {
+        display: block;
+        height: 100%;
+        width: 0;
+        background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+      }
+
+      /* Hero */
+      #hero {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 100vh;
+        padding-top: calc(var(--header-height) + var(--space-lg));
+        padding-bottom: var(--space-xl);
+        overflow: hidden;
+      }
+      .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-sm);
+        z-index: 2;
+      }
+      .hero-content h1 {
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-content h1 .shimmer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transform: translateX(-100%);
+        animation: shimmer 2.5s ease-out forwards;
+      }
+      @keyframes shimmer {
+        to { transform: translateX(200%); }
+      }
+      .hero-bullets {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-xs);
+        font-size: 1rem;
+      }
+      .hero-bullets li::before {
+        content: '•';
+        color: var(--color-primary);
+        margin-right: 0.5rem;
+      }
+      .hero-buttons {
+        display: flex;
+        gap: var(--space-md);
+        margin-top: var(--space-md);
+      }
+      .btn {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--space-xs) var(--space-lg);
+        border-radius: 0.4rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        cursor: pointer;
+        transition: transform var(--trans-fast), box-shadow var(--trans-fast);
+        will-change: transform;
+      }
+      .btn-primary {
+        background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+        color: #111315;
+        box-shadow: 0 0 0px 0 var(--color-primary);
+      }
+      .btn-secondary {
+        background: transparent;
+        border: 1px solid var(--color-primary);
+        color: var(--color-primary);
+      }
+      .btn:focus {
+        outline: 2px dashed var(--color-primary);
+        outline-offset: 2px;
+      }
+      /* Magnetic effect container */
+      .btn-wrap {
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Hero canvas background */
+      #heroCanvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+      }
+      /* Trust bar */
+      .trust-bar {
+        display: flex;
+        gap: var(--space-lg);
+        margin-top: var(--space-lg);
+        opacity: 0.8;
+      }
+      .trust-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-xs);
+        font-size: 0.8rem;
+      }
+      .trust-item svg {
+        width: 1.5rem;
+        height: 1.5rem;
+        fill: var(--color-primary);
+      }
+
+      /* Section headings */
+      .section-title {
+        text-align: center;
+        margin-bottom: var(--space-lg);
+        position: relative;
+      }
+      .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -0.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 3rem;
+        height: 2px;
+        background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+      }
+
+      /* Cards for property details and proof points */
+      .cards-grid {
+        display: grid;
+        grid-gap: var(--space-md);
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      }
+      .card {
+        background: var(--card-bg);
+        border-radius: 0.6rem;
+        padding: var(--space-md);
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 10px 30px -15px var(--shadow-color);
+        transition: transform var(--trans-fast), box-shadow var(--trans-fast);
+        will-change: transform;
+        cursor: pointer;
+      }
+      .card:hover {
+        transform: translateY(-4px) rotateX(2deg) rotateY(-2deg);
+        box-shadow: 0 15px 40px -10px var(--card-glow);
+      }
+      .card-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        margin-bottom: var(--space-sm);
+        fill: var(--color-primary);
+      }
+      .card h3 {
+        margin-bottom: var(--space-xs);
+      }
+      .card ul li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+      .card ul li::before {
+        content: '\2713';
+        color: var(--color-primary);
+      }
+      .card-details {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height var(--trans-med) ease;
+        font-size: 0.9rem;
+        margin-top: var(--space-sm);
+        color: var(--color-muted);
+      }
+      .card.expanded .card-details {
+        max-height: 8rem;
+      }
+
+      /* Slider styling (floor plans & gallery) */
+      .slider {
+        position: relative;
+        overflow: hidden;
+      }
+      .slides {
+        display: flex;
+        transition: transform var(--trans-med) ease;
+        will-change: transform;
+      }
+      .slide {
+        min-width: 100%;
+        padding: var(--space-md);
+      }
+      .slider-controls {
+        display: flex;
+        justify-content: center;
+        gap: var(--space-sm);
+        margin-top: var(--space-sm);
+      }
+      .slider-controls button {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        background: var(--color-bg-alt);
+        border: 1px solid var(--color-primary);
+        color: var(--color-primary);
+        cursor: pointer;
+        transition: background var(--trans-fast);
+      }
+      .slider-controls button:hover,
+      .slider-controls button:focus {
+        background: var(--color-primary);
+        color: var(--color-bg);
+      }
+
+      /* Floor plan placeholder */
+      .floor-plan {
+        width: 100%;
+        height: 300px;
+        background: linear-gradient(135deg, #2a2d31, #1a1c1f);
+        border-radius: 0.4rem;
+        position: relative;
+        overflow: hidden;
+        box-shadow: inset 0 0 20px rgba(0,0,0,0.4);
+      }
+      .floor-plan svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        height: 90%;
+        stroke: var(--color-primary);
+        fill: none;
+        stroke-width: 2;
+      }
+      .floor-caption {
+        margin-top: var(--space-xs);
+        font-size: 0.9rem;
+        text-align: center;
+        color: var(--color-muted);
+      }
+
+      /* Gallery placeholder images */
+      .gallery-slide {
+        width: 100%;
+        height: 300px;
+        border-radius: 0.4rem;
+        background: linear-gradient(120deg, #2c2f33, #1e2023);
+        position: relative;
+        overflow: hidden;
+      }
+      .gallery-slide::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.1), transparent);
+        animation: gallery-glow 6s infinite alternate;
+      }
+      @keyframes gallery-glow {
+        to {
+          transform: scale(1.2);
+        }
+      }
+
+      /* Location section */
+      .map-container {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-md);
+      }
+      .map-graphic {
+        width: 100%;
+        height: 300px;
+        background: linear-gradient(135deg, #202327, #131417);
+        border-radius: 0.4rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .map-graphic svg {
+        width: 100%;
+        height: 100%;
+      }
+      .amenities-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: var(--space-md);
+      }
+      .amenity {
+        display: flex;
+        gap: var(--space-sm);
+        align-items: flex-start;
+      }
+      .amenity svg {
+        width: 1.5rem;
+        height: 1.5rem;
+        fill: var(--color-primary);
+        flex-shrink: 0;
+      }
+      .location-card {
+        margin-top: var(--space-md);
+        background: var(--card-bg);
+        padding: var(--space-md);
+        border-radius: 0.4rem;
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-sm);
+      }
+      .location-card svg {
+        width: 1.5rem;
+        height: 1.5rem;
+        fill: var(--color-primary);
+      }
+      .location-card .coords {
+        font-size: 0.9rem;
+        color: var(--color-muted);
+      }
+
+      /* Pricing & availability */
+      .units-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: var(--space-sm);
+      }
+      .unit-card {
+        background: var(--card-bg);
+        border-radius: 0.4rem;
+        padding: var(--space-sm);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 10px -5px var(--shadow-color);
+        cursor: pointer;
+        transition: background var(--trans-fast), transform var(--trans-fast);
+      }
+      .unit-card:hover {
+        transform: translateY(-2px);
+      }
+      .unit-status {
+        font-weight: 600;
+        text-transform: capitalize;
+      }
+      .unit-status.available { color: #37b24d; }
+      .unit-status.booked { color: #e03131; }
+      .unit-status.pending { color: #f08c00; }
+      .edit-badge {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 0.2rem 0.4rem;
+        font-size: 0.7rem;
+        background: var(--color-primary);
+        color: var(--color-bg);
+        border-radius: 0 0.4rem 0 0;
+      }
+      .unit-card.editing .edit-badge { display: block; }
+
+      /* Why choose section */
+      .proof-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: var(--space-md);
+      }
+      .proof-card {
+        background: var(--card-bg);
+        padding: var(--space-md);
+        border-radius: 0.4rem;
+        text-align: center;
+        box-shadow: 0 4px 20px -10px var(--shadow-color);
+      }
+      .proof-card svg {
+        width: 2rem;
+        height: 2rem;
+        margin-bottom: var(--space-sm);
+        fill: var(--color-primary);
+      }
+
+      /* Contact section */
+      .contact-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+      }
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-sm);
+        background: var(--card-bg);
+        padding: var(--space-md);
+        border-radius: 0.4rem;
+        box-shadow: 0 6px 20px -10px var(--shadow-color);
+      }
+      .contact-form label {
+        font-size: 0.9rem;
+        margin-bottom: 0.25rem;
+      }
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        padding: var(--space-xs);
+        border: none;
+        border-radius: 0.3rem;
+        background: var(--color-bg-alt);
+        color: var(--color-text);
+      }
+      .contact-form textarea {
+        min-height: 100px;
+        resize: vertical;
+      }
+      .contact-form button {
+        align-self: flex-start;
+      }
+      .privacy-note {
+        font-size: 0.8rem;
+        color: var(--color-muted);
+      }
+
+      @media (min-width: 768px) {
+        .contact-container {
+          grid-template-columns: 2fr 1fr;
+        }
+      }
+
+      /* Footer */
+      footer {
+        background: var(--color-bg-alt);
+        padding: var(--space-md) var(--space-sm);
+        text-align: center;
+        font-size: 0.8rem;
+        color: var(--color-muted);
+      }
+
+      /* Modals */
+      .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity var(--trans-fast) ease;
+        z-index: 2000;
+      }
+      .modal.open {
+        opacity: 1;
+        visibility: visible;
+      }
+      .modal-content {
+        background: var(--color-bg-alt);
+        padding: var(--space-md);
+        border-radius: 0.4rem;
+        width: 90%;
+        max-width: 600px;
+        max-height: 90vh;
+        overflow-y: auto;
+        position: relative;
+      }
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--space-sm);
+      }
+      .modal-header h3 {
+        margin: 0;
+      }
+      .modal-close {
+        background: none;
+        border: none;
+        color: var(--color-primary);
+        font-size: 1.5rem;
+        line-height: 1;
+        cursor: pointer;
+      }
+
+      /* Command palette */
+      .command-palette {
+        position: fixed;
+        top: 20vh;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 500px;
+        background: var(--color-bg-alt);
+        border-radius: 0.4rem;
+        box-shadow: 0 20px 40px -10px var(--shadow-color);
+        display: none;
+        flex-direction: column;
+        z-index: 3000;
+      }
+      .command-palette.open { display: flex; }
+      .command-search {
+        padding: var(--space-sm);
+        border: none;
+        border-bottom: 1px solid var(--color-bg);
+        background: transparent;
+        color: var(--color-text);
+        font-size: 1rem;
+        outline: none;
+      }
+      .command-results {
+        max-height: 300px;
+        overflow-y: auto;
+      }
+      .command-item {
+        padding: var(--space-sm);
+        border-bottom: 1px solid var(--color-bg);
+        cursor: pointer;
+      }
+      .command-item:hover,
+      .command-item.active {
+        background: var(--color-bg);
+        color: var(--color-primary);
+      }
+
+      /* Scroll to top */
+      .scroll-top {
+        position: fixed;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        background: var(--color-bg-alt);
+        border: 2px solid var(--color-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity var(--trans-fast);
+        z-index: 1500;
+      }
+      .scroll-top svg {
+        width: 1.2rem;
+        height: 1.2rem;
+        fill: var(--color-primary);
+      }
+      .scroll-top.visible {
+        opacity: 1;
+        visibility: visible;
+      }
+      /* Progress ring inside scroll-top button */
+      .scroll-top .progress-ring {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        stroke: var(--color-primary);
+        stroke-width: 2;
+        fill: transparent;
+        transform: rotate(-90deg);
+      }
+
+      /* Floating chat/inquiry button */
+      .chat-btn {
+        position: fixed;
+        bottom: 1.5rem;
+        left: 1.5rem;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        background: var(--color-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--color-bg);
+        cursor: pointer;
+        z-index: 1500;
+        box-shadow: 0 4px 12px -4px var(--shadow-color);
+      }
+      .chat-btn svg {
+        width: 1.4rem;
+        height: 1.4rem;
+        fill: var(--color-bg);
+      }
+
+      /* Tooltip */
+      .tooltip {
+        position: absolute;
+        background: var(--color-bg-alt);
+        color: var(--color-text);
+        padding: 0.4rem 0.6rem;
+        border-radius: 0.3rem;
+        font-size: 0.75rem;
+        white-space: nowrap;
+        transform: translate(-50%, -120%);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity var(--trans-fast);
+      }
+      .tooltip.visible {
+        opacity: 1;
+      }
+
+      /* --- Scroll controls (top/bottom) ------------------------------------- */
+      .scroll-controls {
+        position: fixed;
+        bottom: 5.5rem;
+        left: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        z-index: 1500;
+      }
+      .scroll-controls .scroll-btn {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        background: var(--color-bg-alt);
+        border: 2px solid var(--color-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+      .scroll-controls .scroll-btn svg {
+        width: 1.2rem;
+        height: 1.2rem;
+        fill: var(--color-primary);
+      }
+      /* Hide original scroll-to-top button since we provide our own controls */
+      .scroll-top {
+        display: none !important;
+      }
+      /* --- AI support chat button (bottom-right) ----------------------------- */
+      .ai-support-btn {
+        position: fixed;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        background: var(--color-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--color-bg);
+        cursor: pointer;
+        z-index: 1600;
+        box-shadow: 0 4px 12px -4px var(--shadow-color);
+      }
+      .ai-support-btn svg {
+        width: 1.4rem;
+        height: 1.4rem;
+        fill: var(--color-bg);
+      }
+      /* Hide the Chatling widget until opened */
+      body.ai-chat-hidden [id*="chatling"],
+      body.ai-chat-hidden iframe[src*="chatling"],
+      body.ai-chat-hidden div[id^="chtl-"],
+      body.ai-chat-hidden #chtl-iframe-container {
+        display: none !important;
+      }
+      /* Style the Chatling iframe container to better match the provided design */
+      #chtl-iframe-container {
+        bottom: 5rem !important;
+        right: 1.5rem !important;
+        width: 350px !important;
+        height: 520px !important;
+        border-radius: 1rem !important;
+        overflow: hidden !important;
+        box-shadow: 0 8px 20px -6px var(--shadow-color) !important;
+      }
+      @media (max-width: 600px) {
+        .scroll-controls {
+          bottom: 5rem;
+          left: 1rem;
+        }
+        .ai-support-btn {
+          bottom: 1rem;
+          right: 1rem;
+        }
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 600px) {
+        .hero-buttons { flex-direction: column; gap: var(--space-sm); }
+        .proof-cards { grid-template-columns: 1fr; }
+      }
+
+      /* Background logo watermark */
+      #bgLogo {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80vw;
+        height: 80vh;
+        color: var(--color-primary);
+        opacity: 0.03;
+        pointer-events: none;
+        z-index: 0;
+      }
+      #bgLogo svg {
+        width: 100%;
+        height: 100%;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 4;
+        stroke-linejoin: round;
+      }
+
+      /* Voice AI button */
+      .voice-ai-btn {
+        background: none;
+        border: 1px solid var(--color-primary);
+        color: var(--color-primary);
+        padding: var(--space-xs) var(--space-sm);
+        border-radius: 0.4rem;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        cursor: pointer;
+        margin-left: var(--space-sm);
+        transition: background var(--trans-fast), color var(--trans-fast);
+      }
+      .voice-ai-btn:hover,
+      .voice-ai-btn:focus {
+        background: var(--color-primary);
+        color: var(--color-bg);
+        outline: none;
+      }
+
+      /* Authentication buttons container */
+      /* Place the auth buttons on the far right of the header. Using
+         margin-left:auto pushes them away from preceding items, ensuring
+         they don't collide with navigation links. They are visible at
+         all screen widths where the nav is shown. */
+      .auth-buttons {
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm);
+        /* Place the auth buttons as a fixed overlay at the top‑right of the viewport
+           so they remain visible even when navigation items wrap. The high z-index
+           ensures they appear above the header and other content. */
+        position: fixed;
+        /* Position the auth buttons just below the fixed header. The header
+           height is controlled by --header-height; adding a small offset
+           ensures a bit of breathing room. */
+        top: calc(var(--header-height) + 0.5rem);
+        right: var(--space-sm);
+        z-index: 1100;
+      }
+      /* Sign in/up buttons */
+      .sign-btn {
+        background: none;
+        border: 1px solid var(--color-primary);
+        color: var(--color-primary);
+        padding: var(--space-xs) var(--space-sm);
+        border-radius: 0.4rem;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        cursor: pointer;
+        transition: background var(--trans-fast), color var(--trans-fast);
+      }
+      .sign-btn:hover,
+      .sign-btn:focus {
+        background: var(--color-primary);
+        color: var(--color-bg);
+        outline: none;
+      }
+
+      /* Auth form styles */
+      .auth-form {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-sm);
+        background: var(--card-bg);
+        padding: var(--space-md);
+        border-radius: 0.4rem;
+        box-shadow: 0 6px 20px -10px var(--shadow-color);
+      }
+      .auth-form label {
+        font-size: 0.9rem;
+        margin-bottom: 0.25rem;
+      }
+      .auth-form input {
+        width: 100%;
+        padding: var(--space-xs);
+        border: none;
+        border-radius: 0.3rem;
+        background: var(--color-bg-alt);
+        color: var(--color-text);
+      }
+      .auth-form button {
+        align-self: flex-start;
+      }
+      .google-btn {
+        margin-top: var(--space-xs);
+      }
+
+      /* Reveal state: once revealed, ensure elements are fully visible */
+      [data-reveal].revealed {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Global background logo watermark -->
+    <div id="bgLogo" aria-hidden="true">
+      <!-- An abstract building silhouette rendered as a large outline for a subtle, world‑class watermark. -->
+      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+        <!-- Abstract floral/star logo: three overlapping ellipses rotated around the centre -->
+        <g stroke="currentColor" fill="none" stroke-linecap="round">
+          <ellipse cx="32" cy="18" rx="22" ry="10" stroke-width="4" />
+          <ellipse cx="32" cy="18" rx="22" ry="10" stroke-width="4" transform="rotate(120 32 32)" />
+          <ellipse cx="32" cy="18" rx="22" ry="10" stroke-width="4" transform="rotate(240 32 32)" />
+        </g>
+      </svg>
+    </div>
+    <!-- Scroll progress bar -->
+    <div class="progress-bar"><span></span></div>
+
+    <!-- Header with brand, navigation and controls -->
+    <header role="banner">
+      <div class="brand" aria-label="AVK Apartments logo">
+        <!-- Inline SVG icon representing building silhouette -->
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M4 28v-8h4v8h4v-12h4v12h4v-16h4v16h4v-20h4v20h-28z" />
+        </svg>
+        <span id="brandName">AVK Apartments</span>
+      </div>
+      <nav role="navigation" aria-label="Primary">
+        <a href="#hero">Home</a>
+        <a href="#details">Amenities</a>
+        <a href="#floorplans">Floor Plan</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#location">Location</a>
+        <a href="#pricing">Availability</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <!-- Mobile nav toggle -->
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </button>
+      <!-- Voice AI button -->
+      <button class="voice-ai-btn" id="voiceBtn" aria-label="Activate voice assistant">Voice AI</button>
+      <!-- Theme toggle button -->
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 3a9 9 0 100 18 9 9 0 000-18zm0 16a7 7 0 110-14 7 7 0 010 14z" />
+        </svg>
+      </button>
+
+      <!-- Authentication buttons -->
+      <div class="auth-buttons">
+        <button class="sign-btn" id="signInBtn" aria-label="Sign in">Sign In</button>
+        <button class="sign-btn" id="signUpBtn" aria-label="Sign up">Sign Up</button>
+      </div>
+    </header>
+
+    <!-- Main content area -->
+    <main id="main" tabindex="-1">
+      <!-- Hero Section -->
+      <section id="hero" aria-label="Introduction">
+        <canvas id="heroCanvas" aria-hidden="true"></canvas>
+        <div class="container">
+          <div class="hero-content" data-reveal>
+            <h1><span id="propertyName">AVK Apartments</span><span class="shimmer" aria-hidden="true"></span></h1>
+            <h2 id="tagline">Modern living in Mulugu’s premier new development</h2>
+            <ul class="hero-bullets">
+              <li>12 brand‑new 1BHK units</li>
+              <li>Own transformer, 24/7 lift &amp; water</li>
+              <li>Parking &amp; ground‑floor shops</li>
+            </ul>
+            <div class="hero-buttons">
+              <div class="btn-wrap">
+                <button class="btn btn-primary" id="ctaSchedule" data-tooltip="Book a slot to see your future home">Schedule a Visit</button>
+                <span class="tooltip" id="scheduleTip">Schedule a Visit</span>
+              </div>
+              <div class="btn-wrap">
+                <button class="btn btn-secondary" id="ctaBrochure" data-tooltip="Download a detailed brochure (PDF)">Download Brochure</button>
+                <span class="tooltip" id="brochureTip">Download Brochure</span>
+              </div>
+            </div>
+            <!-- Trust bar -->
+            <div class="trust-bar" aria-label="Nearby amenities">
+              <div class="trust-item">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" />
+                </svg>
+                <span>Schools</span>
+              </div>
+              <div class="trust-item">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 112.5-2.5A2.5 2.5 0 0112 11.5z" />
+                </svg>
+                <span>Markets</span>
+              </div>
+              <div class="trust-item">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 3h18v18H3V3zm2 2v14h14V5H5z" />
+                </svg>
+                <span>Bus Stop</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Details & Amenities Section -->
+      <section id="details" aria-label="Property details" class="container" data-reveal>
+        <h2 class="section-title">Amenities &amp; Features</h2>
+        <div class="cards-grid" id="amenityCards">
+          <!-- Amenity cards will be populated via JS based on config -->
+        </div>
+      </section>
+
+      <!-- Floor Plans Section -->
+      <section id="floorplans" aria-label="Floor plans" class="container" data-reveal>
+        <h2 class="section-title">Floor Plan &amp; Unit Types</h2>
+        <div class="slider" id="floorSlider" aria-roledescription="carousel">
+          <div class="slides" id="floorSlides">
+            <!-- Slides inserted by JS -->
+          </div>
+          <div class="slider-controls" id="floorControls">
+            <!-- Buttons inserted via JS -->
+          </div>
+        </div>
+        <p class="floor-caption">All units are unfurnished and ready for your personal touch.</p>
+      </section>
+
+      <!-- Gallery Section -->
+      <section id="gallery" aria-label="Gallery" class="container" data-reveal>
+        <h2 class="section-title">Gallery</h2>
+        <div class="slider" id="gallerySlider" aria-roledescription="carousel">
+          <div class="slides" id="gallerySlides"></div>
+          <div class="slider-controls" id="galleryControls"></div>
+        </div>
+      </section>
+
+      <!-- Location Section -->
+      <section id="location" aria-label="Location &amp; Nearby" class="container" data-reveal>
+        <h2 class="section-title">Location &amp; Nearby</h2>
+        <div class="map-container">
+          <div class="map-graphic" aria-hidden="true">
+            <!-- Abstract neighbourhood illustration via SVG -->
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+              <!-- Roads -->
+              <rect x="0" y="28" width="100" height="4" fill="#2a2d31" />
+              <rect x="48" y="0" width="4" height="60" fill="#2a2d31" />
+              <!-- Blocks -->
+              <rect x="10" y="8" width="20" height="12" fill="#1f2124" />
+              <rect x="70" y="38" width="20" height="12" fill="#1f2124" />
+              <rect x="15" y="40" width="18" height="8" fill="#1f2124" />
+              <rect x="72" y="10" width="15" height="10" fill="#1f2124" />
+              <!-- Our building -->
+              <rect x="48" y="28" width="4" height="4" fill="#d19b32" />
+            </svg>
+          </div>
+          <div class="amenities-list" aria-label="Nearby amenities list">
+            <div class="amenity">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+              <div>
+                <strong>Schools</strong>
+                <p>Top‑rated institutions within 1 km.</p>
+              </div>
+            </div>
+            <div class="amenity">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 112.5-2.5A2.5 2.5 0 0112 11.5z"/></svg>
+              <div>
+                <strong>Markets</strong>
+                <p>Fresh produce &amp; essentials just minutes away.</p>
+              </div>
+            </div>
+            <div class="amenity">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 3h18v18H3V3zm2 2v14h14V5H5z"/></svg>
+              <div>
+                <strong>Bus &amp; Transport</strong>
+                <p>Convenient connections to the city centre.</p>
+              </div>
+            </div>
+            <div class="amenity">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 1.01 4.5 2.58A6.122 6.122 0 0116.5 3C19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              <div>
+                <strong>Hospitals</strong>
+                <p>Quality healthcare less than 2 km.</p>
+              </div>
+            </div>
+          </div>
+          <div class="location-card" aria-label="Address and coordinates">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+            <div>
+              <strong>H.NO 6-142, Gollawada</strong><br />near Navata Transport, Mulugu, Telangana – 506343<br />
+              <span class="coords">GPS: 17.6319° N, 79.4715° E</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pricing & Availability Section -->
+      <section id="pricing" aria-label="Pricing &amp; Availability" class="container" data-reveal>
+        <h2 class="section-title">Availability &amp; Pricing</h2>
+        <div class="units-grid" id="unitGrid">
+          <!-- Unit cards inserted via JS; editing enabled for owners -->
+        </div>
+        <p class="privacy-note">Tap any unit to view details or change its status (admin only).</p>
+        <!-- Mini FAQ -->
+        <h3>FAQ</h3>
+        <p><strong>Are the units furnished?</strong> No, all 1BHK units are unfurnished, allowing you to personalise your space.</p>
+        <p><strong>Is parking included?</strong> Yes, parking for residents is included and ground‑floor shops have separate parking.</p>
+      </section>
+
+      <!-- Why Choose Section -->
+      <section id="why" aria-label="Why choose AVK" class="container" data-reveal>
+        <h2 class="section-title">Why Choose AVK Apartments</h2>
+        <div class="proof-cards">
+          <div class="proof-card">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 2H4c-1.1 0-2 .9-2 2v15h2v4l4-4h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 11H6v-2h6v2zm4-4H6V7h10v2z"/></svg>
+            <h3>Reliable Power</h3>
+            <p>With a dedicated transformer, enjoy uninterrupted electricity even during peak demand.</p>
+          </div>
+          <div class="proof-card">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 9v10h4v-6h6v6h4V9l-7-5-7 5z"/></svg>
+            <h3>24/7 Convenience</h3>
+            <p>Our lift and water supply operate round‑the‑clock to make life comfortable and hassle‑free.</p>
+          </div>
+          <div class="proof-card">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zM7.5 9c0-2.48 2.02-4.5 4.5-4.5S16.5 6.52 16.5 9 14.48 13.5 12 13.5 7.5 11.48 7.5 9z"/></svg>
+            <h3>Prime Location</h3>
+            <p>Located minutes from schools, markets and transport, AVK puts you at the centre of convenience.</p>
+          </div>
+        </div>
+        <p>Developed by AVK Group with over two decades of delivering quality residential projects in Telangana.</p>
+      </section>
+
+      <!-- Contact & Schedule Section -->
+      <section id="contact" aria-label="Contact &amp; Visit" class="container" data-reveal>
+        <h2 class="section-title">Contact Us &amp; Schedule a Visit</h2>
+        <div class="contact-container">
+          <form class="contact-form" id="contactForm" aria-label="Contact form">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" required aria-required="true" />
+            </div>
+            <div>
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" required aria-required="true" />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" required aria-required="true" />
+            </div>
+            <div>
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+            <p class="privacy-note">We’ll never share your personal data.</p>
+          </form>
+          <div>
+            <p>Prefer to book a visit? Use our online scheduler to pick a date and time that works for you. We look forward to meeting you!</p>
+            <button class="btn btn-secondary" id="openSchedule">Open Scheduler</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      &copy; <span id="currentYear"></span> AVK Apartments. All rights reserved.
+    </footer>
+
+    <!-- Modals: Schedule, Brochure, Command palette, etc. -->
+    <div class="modal" id="scheduleModal" role="dialog" aria-modal="true" aria-labelledby="scheduleTitle">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="scheduleTitle">Schedule a Visit</h3>
+          <button class="modal-close" aria-label="Close schedule modal">&times;</button>
+        </div>
+        <!-- Embed external scheduler (Cal.com). Change scheduleUrl in JS config to your own booking link. -->
+        <iframe id="schedulerFrame" src="" title="Schedule widget" style="width:100%; height:500px; border:0; border-radius:0.3rem;" loading="lazy"></iframe>
+      </div>
+    </div>
+    <div class="modal" id="brochureModal" role="dialog" aria-modal="true" aria-labelledby="brochureTitle">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="brochureTitle">Download Brochure</h3>
+          <button class="modal-close" aria-label="Close brochure modal">&times;</button>
+        </div>
+        <p>Thank you for your interest! Click the button below to download our brochure (PDF) with full details.</p>
+        <button class="btn btn-primary" id="downloadBrochure">Download</button>
+      </div>
+    </div>
+    <div class="modal" id="unitModal" role="dialog" aria-modal="true" aria-labelledby="unitTitle">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="unitTitle">Unit Details</h3>
+          <button class="modal-close" aria-label="Close unit modal">&times;</button>
+        </div>
+        <div id="unitDetails"></div>
+        <div id="adminControls" style="display:none; margin-top: var(--space-sm);">
+          <label for="statusSelect">Change Status:</label>
+          <select id="statusSelect">
+            <option value="available">Available</option>
+            <option value="booked">Booked</option>
+            <option value="pending">Pending</option>
+          </select>
+          <button class="btn btn-secondary" id="saveStatus">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Voice AI Modal -->
+    <div class="modal" id="voiceModal" role="dialog" aria-modal="true" aria-labelledby="voiceTitle">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="voiceTitle">Voice AI Assistant</h3>
+          <button class="modal-close" aria-label="Close voice assistant modal">&times;</button>
+        </div>
+        <!-- Voice AI iframe. Allows microphone usage. -->
+        <iframe src="https://app.millis.ai/agents/embedded?id=-OZ4qtLaxHxRA8cmDBUi&k=dLFEKFgehRWUKla8EjmiUbv6tNSU3tXp" width="100%" height="500" allow="microphone" style="border:0; border-radius:0.3rem;" loading="lazy"></iframe>
+      </div>
+    </div>
+
+    <!-- Sign In Modal -->
+    <div class="modal" id="signInModal" aria-hidden="true" role="dialog" aria-label="Sign in form">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Sign In</h3>
+          <button class="modal-close" aria-label="Close sign in modal">&times;</button>
+        </div>
+        <form id="signInForm" class="auth-form" aria-label="Sign in form">
+          <label>Email
+            <input type="email" required aria-required="true" />
+          </label>
+          <label>Password
+            <input type="password" required aria-required="true" />
+          </label>
+          <button type="submit" class="btn btn-primary">Sign In</button>
+          <button type="button" class="btn btn-secondary google-btn" id="googleSignIn">Sign in with Google</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Sign Up Modal -->
+    <div class="modal" id="signUpModal" aria-hidden="true" role="dialog" aria-label="Sign up form">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Sign Up</h3>
+          <button class="modal-close" aria-label="Close sign up modal">&times;</button>
+        </div>
+        <form id="signUpForm" class="auth-form" aria-label="Sign up form">
+          <label>Name
+            <input type="text" required aria-required="true" />
+          </label>
+          <label>Email
+            <input type="email" required aria-required="true" />
+          </label>
+          <label>Password
+            <input type="password" required aria-required="true" />
+          </label>
+          <button type="submit" class="btn btn-primary">Sign Up</button>
+          <button type="button" class="btn btn-secondary google-btn" id="googleSignUp">Sign up with Google</button>
+        </form>
+      </div>
+    </div>
+    <div class="command-palette" id="commandPalette" aria-modal="true" role="dialog" aria-label="Command palette">
+      <input type="text" class="command-search" id="commandSearch" placeholder="Type a section name..." aria-label="Search sections" />
+      <div class="command-results" id="commandResults"></div>
+    </div>
+    <!-- Scroll to top button with progress ring -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8l-6 6h12z"/></svg>
+      <svg class="progress-ring" viewBox="0 0 36 36"><circle cx="18" cy="18" r="16" /></svg>
+    </button>
+    <!-- Removed floating chat/inquiry button as per requirements -->
+
+    <!-- JSON-LD schema for SEO -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": ["Organization", "LocalBusiness"],
+        "name": "AVK Apartments",
+        "url": "https://avk-apartments.example.com/",
+        "logo": "data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMzIgMzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbD0iI2QxOWIzMiIgZD0iTTQgMjh2LThINC0yIDR2LSAxMiAoQXZzKTQgLjQgNiAyLjggNiAyIGhzIDQgNiAwIDQ2IDAgNCAyIEg0IHI0IDciLz48L3N2Zz4=",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "H.NO 6-142, Gollawada, near Navata Transport",
+          "addressLocality": "Mulugu",
+          "addressRegion": "Telangana",
+          "postalCode": "506343",
+          "addressCountry": "IN"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 17.6319,
+          "longitude": 79.4715
+        },
+        "description": "AVK Apartments offers modern living in Mulugu's premier development with 12 brand-new 1BHK units, own transformer, 24/7 lift & water and parking."
+      }
+    </script>
+
+    <script>
+      /*
+        Configuration
+        -------------
+        Centralise property information, unit statuses and schedule URL here.
+        Changing these values will update the site automatically. For admin
+        editing of unit status, set isAdmin to true. Unit statuses persist
+        across sessions using localStorage.
+      */
+      const CONFIG = {
+        propertyName: 'AVK Apartments',
+        tagline: 'Modern living in Mulugu’s premier new development',
+        highlights: [
+          '12 brand‑new 1BHK units',
+          'Own transformer, 24/7 lift & water',
+          'Parking & ground‑floor shops'
+        ],
+        // Scheduling link: embed your Cal.com booking page here. The '?embed=1'
+        // parameter enables the embedded widget mode on Cal.com.
+        scheduleUrl: 'https://cal.com/vinay-kumar-we8cya/hotel-room-booking?embed=1',
+        brochureUrl: '#', // replace with actual PDF path when ready
+        units: (() => {
+          // Default unit status. The building has 2 floors, 6 units per floor.
+          const stored = JSON.parse(localStorage.getItem('unitStatus') || 'null');
+          const defaultUnits = [];
+          for (let floor = 1; floor <= 2; floor++) {
+            for (let num = 1; num <= 6; num++) {
+              const id = `${floor}0${num}`;
+              defaultUnits.push({ id, status: 'available', price: 'On request' });
+            }
+          }
+          return stored || defaultUnits;
+        })(),
+        isAdmin: false // Set to true to enable editing controls
+      };
+
+      document.addEventListener('DOMContentLoaded', () => {
+        // Inject property name and tagline
+        document.getElementById('propertyName').textContent = CONFIG.propertyName;
+        document.getElementById('brandName').textContent = CONFIG.propertyName;
+        document.getElementById('tagline').textContent = CONFIG.tagline;
+        // Populate hero bullets
+        const bullets = document.querySelector('.hero-bullets');
+        bullets.innerHTML = '';
+        CONFIG.highlights.forEach(h => {
+          const li = document.createElement('li');
+          li.textContent = h;
+          bullets.appendChild(li);
+        });
+        // Year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        // Build amenity cards
+        buildAmenityCards();
+        // Build floor plan slides
+        initFloorSlides();
+        // Build gallery slides
+        initGallerySlides();
+        // Build unit cards
+        buildUnitCards();
+        // Initialise interactions
+        initNavigation();
+        initThemeToggle();
+        initProgressBar();
+        initReveal();
+        initMagneticButtons();
+        initCanvasBg('heroCanvas');
+        initCommandPalette();
+        initScrollTop();
+        initTooltips();
+        initModals();
+        initSchedule();
+        initEditControls();
+        initChatButton();
+        initVoiceAI();
+        initAuthButtons();
+        // Initialise new scroll controls and AI support chat
+        initScrollControls();
+        initAiSupportChat();
+      });
+
+      /* UI Construction Functions */
+      function buildAmenityCards() {
+        const features = [
+          {
+            title: '1BHK x12',
+            bullets: ['Spacious layouts', 'Natural light', 'Airy balconies'],
+            icon: '<svg viewBox="0 0 24 24"><path d="M5 9v10h4v-6h6v6h4V9l-7-5-7 5z" /></svg>',
+            details: 'Each of our twelve 1BHK units offers a generous floor plan with ample daylight and cross‑ventilation.'
+          },
+          {
+            title: 'Own Transformer',
+            bullets: ['Zero load shedding', 'Stable voltage', 'Energy efficient'],
+            icon: '<svg viewBox="0 0 24 24"><path d="M13 2H4c-1.1 0-2 .9-2 2v15h2v4l4-4h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z" /></svg>',
+            details: 'With an independent transformer, AVK Apartments ensures uninterrupted power supply even during peak demand.'
+          },
+          {
+            title: '24/7 Lift',
+            bullets: ['High capacity', 'Smooth ride', 'Low noise'],
+            icon: '<svg viewBox="0 0 24 24"><path d="M7 2v20h10V2H7zm2 2h6v16H9V4z" /></svg>',
+            details: 'Our modern lift operates around the clock, ensuring seamless vertical mobility for all residents.'
+          },
+          {
+            title: '24/7 Water',
+            bullets: ['Filtered supply', 'Ample pressure', 'Storage backup'],
+            icon: '<svg viewBox="0 0 24 24"><path d="M12 3.77L18.39 12c-.74 4.44-3.99 8-6.39 8-2.4 0-5.65-3.56-6.39-8L12 3.77z" /></svg>',
+            details: 'Enjoy the comfort of uninterrupted water supply with our on‑site storage and purification systems.'
+          },
+          {
+            title: 'Parking',
+            bullets: ['Secure', 'Spacious', 'Covered'],
+            icon: '<svg viewBox="0 0 24 24"><path d="M18 7H6c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zM6 17V9h12v8H6z" /><circle cx="8.5" cy="14.5" r="1.5" /><circle cx="15.5" cy="14.5" r="1.5" /></svg>',
+            details: 'Dedicated resident parking and separate parking for shops ensure convenience for all.'
+          },
+          {
+            title: 'Shops',
+            bullets: ['Three units', 'Prime frontage', 'Separate access'],
+            icon: '<svg viewBox="0 0 24 24"><path d="M4 4h16v2H4V4zm1 3h14v13H5V7z" /></svg>',
+            details: 'Three ground‑floor shops with excellent street presence available for commercial use.'
+          }
+        ];
+        const container = document.getElementById('amenityCards');
+        features.forEach((feat, index) => {
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.innerHTML = `
+            <div class="card-icon">${feat.icon}</div>
+            <h3>${feat.title}</h3>
+            <ul>${feat.bullets.map(b => `<li>${b}</li>`).join('')}</ul>
+            <div class="card-details">${feat.details}</div>
+          `;
+          card.addEventListener('click', () => card.classList.toggle('expanded'));
+          container.appendChild(card);
+        });
+      }
+
+      function initFloorSlides() {
+        const slidesContainer = document.getElementById('floorSlides');
+        const controlsContainer = document.getElementById('floorControls');
+        const slidesData = CONFIG.units.map(unit => ({ id: unit.id }));
+        // Only unique floor plan; duplicate for each unit (same layout). We generate a simple floor plan via SVG.
+        slidesData.forEach((unit, i) => {
+          const slide = document.createElement('div');
+          slide.className = 'slide';
+          slide.innerHTML = `
+            <div class="floor-plan">
+              <svg viewBox="0 0 100 100">
+                <rect x="0" y="0" width="100" height="100" rx="2" ry="2" stroke-width="2" />
+                <!-- Living room -->
+                <rect x="5" y="5" width="60" height="40" stroke-width="1.5" />
+                <!-- Bedroom -->
+                <rect x="5" y="50" width="40" height="45" stroke-width="1.5" />
+                <!-- Kitchen -->
+                <rect x="70" y="5" width="25" height="30" stroke-width="1.5" />
+                <!-- Bath -->
+                <rect x="70" y="40" width="25" height="20" stroke-width="1.5" />
+              </svg>
+            </div>
+            <div class="floor-caption">Unit ${unit.id}</div>
+          `;
+          slidesContainer.appendChild(slide);
+          const btn = document.createElement('button');
+          btn.setAttribute('aria-label', `Go to slide ${i + 1}`);
+          btn.addEventListener('click', () => {
+            currentFloorIndex = i;
+            updateFloorSlider();
+          });
+          controlsContainer.appendChild(btn);
+        });
+        let currentFloorIndex = 0;
+        function updateFloorSlider() {
+          slidesContainer.style.transform = `translateX(-${currentFloorIndex * 100}%)`;
+          [...controlsContainer.children].forEach((c, idx) => {
+            c.style.background = idx === currentFloorIndex ? 'var(--color-primary)' : 'var(--color-bg-alt)';
+            c.style.color = idx === currentFloorIndex ? 'var(--color-bg)' : 'var(--color-primary)';
+          });
+        }
+        updateFloorSlider();
+      }
+
+      function initGallerySlides() {
+        const slidesContainer = document.getElementById('gallerySlides');
+        const controlsContainer = document.getElementById('galleryControls');
+        const galleryCount = 6;
+        for (let i = 0; i < galleryCount; i++) {
+          const slide = document.createElement('div');
+          slide.className = 'slide';
+          slide.innerHTML = `<div class="gallery-slide"></div>`;
+          slidesContainer.appendChild(slide);
+          const btn = document.createElement('button');
+          btn.setAttribute('aria-label', `Go to gallery slide ${i + 1}`);
+          btn.addEventListener('click', () => {
+            currentGalleryIndex = i;
+            updateGallerySlider();
+          });
+          controlsContainer.appendChild(btn);
+        }
+        let currentGalleryIndex = 0;
+        function updateGallerySlider() {
+          slidesContainer.style.transform = `translateX(-${currentGalleryIndex * 100}%)`;
+          [...controlsContainer.children].forEach((c, idx) => {
+            c.style.background = idx === currentGalleryIndex ? 'var(--color-primary)' : 'var(--color-bg-alt)';
+            c.style.color = idx === currentGalleryIndex ? 'var(--color-bg)' : 'var(--color-primary)';
+          });
+        }
+        updateGallerySlider();
+      }
+
+      function buildUnitCards() {
+        const grid = document.getElementById('unitGrid');
+        grid.innerHTML = '';
+        CONFIG.units.forEach(unit => {
+          const card = document.createElement('div');
+          card.className = 'unit-card';
+          card.setAttribute('data-id', unit.id);
+          card.innerHTML = `
+            <span>Unit ${unit.id}</span>
+            <span class="unit-status ${unit.status}">${unit.status}</span>
+            <span class="edit-badge">Edit</span>
+          `;
+          card.addEventListener('click', () => openUnitModal(unit.id));
+          grid.appendChild(card);
+        });
+      }
+
+      function openUnitModal(id) {
+        const modal = document.getElementById('unitModal');
+        const details = document.getElementById('unitDetails');
+        const adminControls = document.getElementById('adminControls');
+        const select = document.getElementById('statusSelect');
+        const saveBtn = document.getElementById('saveStatus');
+        const unit = CONFIG.units.find(u => u.id === id);
+        details.innerHTML = `<p><strong>Unit ${id}</strong></p><p>Status: ${unit.status}</p><p>Price: ${unit.price}</p><p>Floor: ${id.charAt(0)}</p>`;
+        if (CONFIG.isAdmin) {
+          adminControls.style.display = 'block';
+          select.value = unit.status;
+          saveBtn.onclick = () => {
+            unit.status = select.value;
+            localStorage.setItem('unitStatus', JSON.stringify(CONFIG.units));
+            buildUnitCards();
+            closeModal(modal);
+          };
+        } else {
+          adminControls.style.display = 'none';
+        }
+        openModal(modal);
+      }
+
+      /* Navigation: mobile toggle and active link highlighting */
+      function initNavigation() {
+        const navToggle = document.querySelector('.nav-toggle');
+        const nav = document.querySelector('nav');
+        navToggle.addEventListener('click', () => {
+          const expanded = nav.getAttribute('aria-expanded') === 'true';
+          nav.style.display = expanded ? 'none' : 'flex';
+          nav.setAttribute('aria-expanded', !expanded);
+        });
+        // Update active link on scroll
+        const sections = document.querySelectorAll('main section');
+        window.addEventListener('scroll', () => {
+          let current = '';
+          sections.forEach(sec => {
+            const top = sec.offsetTop - (window.innerHeight / 2);
+            if (scrollY >= top) {
+              current = sec.getAttribute('id');
+            }
+          });
+          document.querySelectorAll('nav a').forEach(a => {
+            if (a.getAttribute('href').substring(1) === current) {
+              a.classList.add('active');
+            } else {
+              a.classList.remove('active');
+            }
+          });
+        });
+      }
+
+      /* Theme toggling */
+      function initThemeToggle() {
+        const btn = document.querySelector('.theme-toggle');
+        btn.addEventListener('click', () => {
+          document.documentElement.classList.toggle('theme-darker');
+          localStorage.setItem('theme', document.documentElement.classList.contains('theme-darker') ? 'darker' : 'default');
+        });
+        // Restore preference
+        const themePref = localStorage.getItem('theme');
+        if (themePref === 'darker') {
+          document.documentElement.classList.add('theme-darker');
+        }
+      }
+
+      /* Progress bar updates */
+      function initProgressBar() {
+        const bar = document.querySelector('.progress-bar span');
+        window.addEventListener('scroll', () => {
+          const max = document.body.scrollHeight - window.innerHeight;
+          const percent = (window.scrollY / max) * 100;
+          bar.style.width = percent + '%';
+        });
+      }
+
+      /* Reveal on scroll */
+      function initReveal() {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              // Add revealed class to trigger CSS and immediately set visible
+              entry.target.classList.add('revealed');
+              entry.target.style.opacity = '1';
+              entry.target.style.transform = 'none';
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('[data-reveal]').forEach(el => {
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(20px)';
+          el.style.transition = `opacity var(--trans-med) ease, transform var(--trans-med) ease`;
+          observer.observe(el);
+        });
+        // When transition ends on revealed element, clear inline styles so CSS can take over
+        document.addEventListener('transitionend', e => {
+          const target = e.target;
+          if (target.hasAttribute('data-reveal') && target.classList.contains('revealed')) {
+            target.style.opacity = '';
+            target.style.transform = '';
+            target.style.transition = '';
+          }
+        });
+      }
+
+      /* Magnetic buttons */
+      function initMagneticButtons() {
+        const buttons = document.querySelectorAll('.btn');
+        buttons.forEach(btn => {
+          const container = btn.parentElement;
+          container.addEventListener('mousemove', (e) => {
+            const rect = container.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            btn.style.transform = `translate(${x * 0.05}px, ${y * 0.05}px)`;
+          });
+          container.addEventListener('mouseleave', () => {
+            btn.style.transform = 'translate(0,0)';
+          });
+        });
+      }
+
+      /* Canvas background: abstract network for hero */
+      function initCanvasBg(id) {
+        const canvas = document.getElementById(id);
+        const ctx = canvas.getContext('2d');
+        let width, height, dpr;
+        let points = [];
+        const POINT_COUNT = 50;
+        function resize() {
+          dpr = window.devicePixelRatio || 1;
+          width = canvas.clientWidth * dpr;
+          height = canvas.clientHeight * dpr;
+          canvas.width = width;
+          canvas.height = height;
+          initPoints();
+        }
+        function initPoints() {
+          points = [];
+          for (let i = 0; i < POINT_COUNT; i++) {
+            points.push({
+              x: Math.random() * width,
+              y: Math.random() * height,
+              vx: (Math.random() - 0.5) * 0.3,
+              vy: (Math.random() - 0.5) * 0.3
+            });
+          }
+        }
+        function draw() {
+          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+          ctx.clearRect(0, 0, width, height);
+          ctx.strokeStyle = 'rgba(209,155,50,0.2)';
+          ctx.fillStyle = 'rgba(209,155,50,0.4)';
+          for (let i = 0; i < POINT_COUNT; i++) {
+            const p = points[i];
+            // Move point
+            p.x += p.vx * dpr;
+            p.y += p.vy * dpr;
+            // Bounce edges
+            if (p.x < 0 || p.x > width) p.vx *= -1;
+            if (p.y < 0 || p.y > height) p.vy *= -1;
+            // Draw point
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, 1.5 * dpr, 0, Math.PI * 2);
+            ctx.fill();
+            // Connect near neighbours
+            for (let j = i + 1; j < POINT_COUNT; j++) {
+              const q = points[j];
+              const dist = Math.hypot(p.x - q.x, p.y - q.y);
+              if (dist < 100 * dpr) {
+                ctx.globalAlpha = 1 - dist / (100 * dpr);
+                ctx.beginPath();
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(q.x, q.y);
+                ctx.stroke();
+              }
+            }
+          }
+          ctx.globalAlpha = 1;
+          requestAnimationFrame(draw);
+        }
+        resize();
+        draw();
+        window.addEventListener('resize', resize);
+      }
+
+      /* Command palette */
+      function initCommandPalette() {
+        const palette = document.getElementById('commandPalette');
+        const search = document.getElementById('commandSearch');
+        const results = document.getElementById('commandResults');
+        const sections = Array.from(document.querySelectorAll('main section')).map(sec => ({
+          id: sec.id,
+          label: sec.querySelector('.section-title') ? sec.querySelector('.section-title').textContent : sec.id
+        }));
+        let activeIndex = -1;
+        function openPalette() {
+          palette.classList.add('open');
+          search.value = '';
+          updateResults('');
+          palette.setAttribute('aria-hidden', 'false');
+          search.focus();
+        }
+        function closePalette() {
+          palette.classList.remove('open');
+          palette.setAttribute('aria-hidden', 'true');
+          activeIndex = -1;
+        }
+        function updateResults(query) {
+          results.innerHTML = '';
+          const filtered = sections.filter(s => s.label.toLowerCase().includes(query.toLowerCase()));
+          filtered.forEach((s, idx) => {
+            const div = document.createElement('div');
+            div.className = 'command-item';
+            div.textContent = s.label;
+            div.dataset.target = s.id;
+            if (idx === activeIndex) div.classList.add('active');
+            div.addEventListener('click', () => {
+              document.getElementById(s.id).scrollIntoView({ behavior: 'smooth' });
+              closePalette();
+            });
+            results.appendChild(div);
+          });
+        }
+        search.addEventListener('input', () => {
+          activeIndex = -1;
+          updateResults(search.value);
+        });
+        search.addEventListener('keydown', (e) => {
+          const items = Array.from(results.children);
+          if (e.key === 'ArrowDown') {
+            activeIndex = (activeIndex + 1) % items.length;
+            updateActiveItem(items);
+            e.preventDefault();
+          } else if (e.key === 'ArrowUp') {
+            activeIndex = (activeIndex - 1 + items.length) % items.length;
+            updateActiveItem(items);
+            e.preventDefault();
+          } else if (e.key === 'Enter') {
+            if (items[activeIndex]) items[activeIndex].click();
+          } else if (e.key === 'Escape') {
+            closePalette();
+          }
+        });
+        function updateActiveItem(items) {
+          items.forEach((it, idx) => {
+            it.classList.toggle('active', idx === activeIndex);
+          });
+        }
+        document.addEventListener('keydown', (e) => {
+          if ((e.key === '/' && e.target === document.body) || (e.key.toLowerCase() === 'k' && (e.metaKey || e.ctrlKey))) {
+            openPalette();
+            e.preventDefault();
+          }
+        });
+        window.addEventListener('click', (e) => {
+          if (!palette.contains(e.target) && !e.target.closest('.command-palette')) {
+            closePalette();
+          }
+        });
+      }
+
+      /* Scroll to top button */
+      function initScrollTop() {
+        const btn = document.getElementById('scrollTop');
+        const ring = btn.querySelector('.progress-ring circle');
+        const radius = 16;
+        const circumference = 2 * Math.PI * radius;
+        ring.style.strokeDasharray = `${circumference} ${circumference}`;
+        ring.style.strokeDashoffset = `${circumference}`;
+        function update() {
+          const max = document.body.scrollHeight - window.innerHeight;
+          const progress = scrollY / max;
+          const offset = circumference - progress * circumference;
+          ring.style.strokeDashoffset = offset;
+          if (scrollY > 300) {
+            btn.classList.add('visible');
+          } else {
+            btn.classList.remove('visible');
+          }
+        }
+        window.addEventListener('scroll', update);
+        btn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+
+      /* Tooltips for buttons */
+      function initTooltips() {
+        document.querySelectorAll('[data-tooltip]').forEach(trigger => {
+          const tip = trigger.nextElementSibling;
+          function show() { tip.classList.add('visible'); }
+          function hide() { tip.classList.remove('visible'); }
+          trigger.addEventListener('mouseenter', show);
+          trigger.addEventListener('mouseleave', hide);
+          trigger.addEventListener('focus', show);
+          trigger.addEventListener('blur', hide);
+        });
+      }
+
+      /* Modal logic */
+      function initModals() {
+        document.querySelectorAll('.modal').forEach(modal => {
+          const closeBtn = modal.querySelector('.modal-close');
+          closeBtn.addEventListener('click', () => closeModal(modal));
+          modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal(modal);
+          });
+        });
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            document.querySelectorAll('.modal.open').forEach(m => closeModal(m));
+            document.getElementById('commandPalette').classList.remove('open');
+          }
+        });
+      }
+      function openModal(modal) {
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+        trapFocus(modal);
+      }
+      function closeModal(modal) {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.activeElement && document.activeElement.blur();
+      }
+      function trapFocus(modal) {
+        const focusableSelectors = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, [tabindex]';
+        const focusable = Array.from(modal.querySelectorAll(focusableSelectors));
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        modal.addEventListener('keydown', (e) => {
+          if (e.key !== 'Tab') return;
+          if (e.shiftKey) {
+            if (document.activeElement === first) {
+              last.focus();
+              e.preventDefault();
+            }
+          } else {
+            if (document.activeElement === last) {
+              first.focus();
+              e.preventDefault();
+            }
+          }
+        });
+        first.focus();
+      }
+
+      /* Scheduling modal & brochure download */
+      function initSchedule() {
+          // Set schedule URL on iframe
+          const schedulerFrame = document.getElementById('schedulerFrame');
+          schedulerFrame.src = CONFIG.scheduleUrl;
+          document.getElementById('ctaSchedule').addEventListener('click', () => openModal(document.getElementById('scheduleModal')));
+          document.getElementById('openSchedule').addEventListener('click', () => openModal(document.getElementById('scheduleModal')));
+          document.getElementById('ctaBrochure').addEventListener('click', () => openModal(document.getElementById('brochureModal')));
+          document.getElementById('downloadBrochure').addEventListener('click', () => {
+            window.open(CONFIG.brochureUrl, '_blank');
+            closeModal(document.getElementById('brochureModal'));
+          });
+      }
+
+      /* Voice AI button */
+      function initVoiceAI() {
+        const btn = document.getElementById('voiceBtn');
+        if (!btn) return;
+        btn.addEventListener('click', () => {
+          openModal(document.getElementById('voiceModal'));
+        });
+      }
+
+      /* Edit controls for units (admin) */
+      function initEditControls() {
+        if (!CONFIG.isAdmin) return;
+        document.querySelectorAll('.unit-card .edit-badge').forEach(badge => badge.style.display = 'block');
+      }
+
+      /* Floating chat button to open contact form */
+      function initChatButton() {
+        const btn = document.getElementById('chatBtn');
+        if (!btn) return;
+        btn.addEventListener('click', () => {
+          const contact = document.getElementById('contact');
+          if (contact) {
+            contact.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      }
+
+      /* Initialize authentication buttons and modals */
+      function initAuthButtons() {
+        const signInBtn = document.getElementById('signInBtn');
+        const signUpBtn = document.getElementById('signUpBtn');
+        if (signInBtn) {
+          signInBtn.addEventListener('click', () => {
+            openModal(document.getElementById('signInModal'));
+          });
+        }
+        if (signUpBtn) {
+          signUpBtn.addEventListener('click', () => {
+            openModal(document.getElementById('signUpModal'));
+          });
+        }
+        // Handle form submissions (placeholder actions)
+        const signInForm = document.getElementById('signInForm');
+        if (signInForm) {
+          signInForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Signed in! (This is a demo placeholder.)');
+            closeModal(document.getElementById('signInModal'));
+          });
+        }
+        const signUpForm = document.getElementById('signUpForm');
+        if (signUpForm) {
+          signUpForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Signed up! (This is a demo placeholder.)');
+            closeModal(document.getElementById('signUpModal'));
+          });
+        }
+        // Google sign-in/up placeholder handlers
+        const googleIn = document.getElementById('googleSignIn');
+        if (googleIn) {
+          googleIn.addEventListener('click', () => {
+            alert('Google sign in is currently not implemented.');
+          });
+        }
+        const googleUp = document.getElementById('googleSignUp');
+        if (googleUp) {
+          googleUp.addEventListener('click', () => {
+            alert('Google sign up is currently not implemented.');
+          });
+        }
+      }
+
+      /* Initialize scroll controls for top and bottom navigation */
+      function initScrollControls() {
+        const upBtn = document.getElementById('scrollUp');
+        const downBtn = document.getElementById('scrollDown');
+        if (upBtn) {
+          upBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        }
+        if (downBtn) {
+          downBtn.addEventListener('click', () => {
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+          });
+        }
+      }
+
+      /* Initialize AI support chat toggle button */
+      function initAiSupportChat() {
+        const btn = document.getElementById('aiSupportBtn');
+        // Hide chat by default
+        document.body.classList.add('ai-chat-hidden');
+        let visible = false;
+        if (!btn) return;
+        function openChat() {
+          document.body.classList.remove('ai-chat-hidden');
+          // Attempt to open Chatling via its API if available
+          try {
+            const api = window.chtl || window.Chatling || window.chatling;
+            if (api) {
+              if (typeof api.open === 'function') {
+                api.open();
+              } else if (typeof api.toggle === 'function') {
+                api.toggle(true);
+              }
+            }
+          } catch (e) {}
+          btn.setAttribute('aria-pressed', 'true');
+          btn.setAttribute('aria-label', 'Hide support chat');
+          btn.title = 'Hide support';
+          visible = true;
+        }
+        function hideChat() {
+          // Do not call close on the API; simply hide the container so conversation remains open
+          document.body.classList.add('ai-chat-hidden');
+          btn.setAttribute('aria-pressed', 'false');
+          btn.setAttribute('aria-label', 'Open support chat');
+          btn.title = 'Open support';
+          visible = false;
+        }
+        btn.addEventListener('click', () => {
+          if (visible) {
+            hideChat();
+          } else {
+            openChat();
+          }
+        });
+      }
+
+      /* Form submission (dummy) */
+      document.getElementById('contactForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Thank you! We will reach out shortly.');
+        e.target.reset();
+      });
+    </script>
+
+    <!--
+      Customisation Guide
+      -------------------
+      This block explains how to customise the various aspects of this
+      website. You can modify the CONFIG object in the script to change
+      propertyName, tagline, highlights, scheduleUrl, brochureUrl, unit
+      statuses and admin mode. To adjust colours or spacing, edit the
+      CSS variables defined at the top of the style element. Icons can be
+      swapped by replacing the inline SVG strings in the amenity and proof
+      point definitions.
+
+      Changing unit statuses: set CONFIG.isAdmin = true. Clicking on a
+      unit card will open a modal where you can change its status. Changes
+      persist using localStorage.
+
+      Cal.com integration: set CONFIG.scheduleUrl to your Cal.com link to
+      embed scheduling inside the modal. Alternatively, implement your
+      own date/time picker in the schedule modal using pure JavaScript.
+
+      Brochure download: set CONFIG.brochureUrl to the path of your
+      brochure PDF. The button will open it in a new tab.
+
+      TODO:
+      - Integrate form submission with a backend service or CMS.
+      - Add analytics tracking (respecting privacy and GDPR).
+      - Hook unit status updates to a database for multi‑user editing.
+      - Replace gallery placeholders with actual images encoded as
+        data‑URIs or drawn via SVG/CSS.
+      - Optimise performance further by deferring non‑critical scripts.
+
+      End of customisation guide.
+    -->
+
+    <!-- Scroll controls (top and bottom) -->
+    <div class="scroll-controls" id="scrollControls">
+      <button class="scroll-btn" id="scrollUp" aria-label="Scroll to top">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8l-6 6h12z"/></svg>
+      </button>
+      <button class="scroll-btn" id="scrollDown" aria-label="Scroll to bottom">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16l-6-6h12z"/></svg>
+      </button>
+    </div>
+
+    <!-- AI support chat toggle button (bottom-right) -->
+    <button class="ai-support-btn" id="aiSupportBtn" aria-label="Open support chat" title="Open support">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 2C7.58 2 4 5.58 4 10v4a4 4 0 004 4h1v2l3-2h4a4 4 0 004-4v-4c0-4.42-3.58-8-8-8z" />
+      </svg>
+    </button>
+
+    <!-- Chatling embed code for AI support chat -->
+    <script>
+      window.chtlConfig = { chatbotId: "5862418494" };
+    </script>
+    <script async data-id="5862418494" id="chtl-script" type="text/javascript" src="https://chatling.ai/js/embed.js"></script>
+  </body>
+</html>
